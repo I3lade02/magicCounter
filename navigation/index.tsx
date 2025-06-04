@@ -6,7 +6,7 @@ import SetupScreen from '../screens/SetupScreen';
 
 export type RootStackParamList = {
   Setup: undefined;
-  Home: { playerCount: number };
+  Home: { playerCount: number; playerNames: string[] };
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
