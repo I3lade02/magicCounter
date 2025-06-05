@@ -49,7 +49,7 @@ const MainScreen: React.FC<Props> = ({ route, navigation }) => {
         <View style={styles.verticalContainer}>
           {players.map((player) => (
             <View key={player.id} style={styles.playerHalf}>
-              <View style={styles.cardWrapper}>
+              <View style={styles.cardFull}>
                 <LifeCounter
                   playerName={player.name}
                   life={player.life}
@@ -100,8 +100,9 @@ const MainScreen: React.FC<Props> = ({ route, navigation }) => {
               onDecrease={() => updateLife(item.id, -1)}
             />
           )}
-        />
-      )}
+  />
+)}
+
 
       <View style={styles.buttons}>
         <Button title="Reset Game" onPress={resetGameToSetup} color={colors.button} />
@@ -115,55 +116,49 @@ export default MainScreen;
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-  },
-  verticalContainer: {
-    flex: 1,
-    justifyContent: 'space-between',
-    paddingVertical: 10,
-  },
-  playerHalf: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    padding: 10,
-  },
-  threePlayerContainer: {
+  flex: 1,
+  backgroundColor: '#000', // or from theme
+},
+verticalContainer: {
+  flex: 1,
+  justifyContent: 'space-evenly',
+  paddingVertical: 10,
+},
+playerHalf: {
+  flex: 1,
+  justifyContent: 'center',
+  alignItems: 'center',
+},
+threePlayerContainer: {
   flex: 1,
   justifyContent: 'center',
   paddingVertical: 20,
-  gap: 20,
 },
 threeTopRow: {
   flexDirection: 'row',
-  justifyContent: 'space-around',
+  justifyContent: 'space-evenly',
   paddingHorizontal: 10,
-  gap: 10,
+  marginBottom: 20,
 },
 threeBottomRow: {
-  marginTop: 20,
   alignItems: 'center',
 },
-cardWrapper: {
-  width: '45%', // fixed percentage width
+cardHalf: {
+  width: '45%',
   maxWidth: 300,
-  minWidth: 160,
+},
+cardFull: {
+  width: '95%',
+  maxWidth: 620,
+  alignSelf: 'center',
 },
 gridList: {
   padding: 10,
-  gap: 10,
 },
 buttons: {
   alignSelf: 'center',
   gap: 10,
   marginBottom: 20,
 },
-cardHalf: {
-  width: '48%',
-  maxWidth: 300,
-},
-cardFull: {
-  width: '95%',
-  maxWidth: 620,
-},
+
 });
